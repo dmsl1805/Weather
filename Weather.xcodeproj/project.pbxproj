@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3968BFEC04DFAF76D0EB95FF /* Pods_Weather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF6E047872D691EFB27C9543 /* Pods_Weather.framework */; };
-		A30CA4681E2B9BFB009F2C35 /* EmptySegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30CA4671E2B9BFB009F2C35 /* EmptySegue.swift */; };
 		A30CA46A1E2B9D56009F2C35 /* EmptyLoaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30CA4691E2B9D56009F2C35 /* EmptyLoaderViewController.swift */; };
 		A30CA46C1E2B9E18009F2C35 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30CA46B1E2B9E18009F2C35 /* ContainerViewController.swift */; };
 		A30CA4711E2BCF21009F2C35 /* EmptyLoaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A30CA4701E2BCF21009F2C35 /* EmptyLoaderViewController.xib */; };
@@ -44,7 +43,6 @@
 
 /* Begin PBXFileReference section */
 		07916059EE6B64C6A3CA4AF2 /* Pods-Weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weather/Pods-Weather.debug.xcconfig"; sourceTree = "<group>"; };
-		A30CA4671E2B9BFB009F2C35 /* EmptySegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptySegue.swift; sourceTree = "<group>"; };
 		A30CA4691E2B9D56009F2C35 /* EmptyLoaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyLoaderViewController.swift; sourceTree = "<group>"; };
 		A30CA46B1E2B9E18009F2C35 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		A30CA4701E2BCF21009F2C35 /* EmptyLoaderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyLoaderViewController.xib; sourceTree = "<group>"; };
@@ -109,14 +107,6 @@
 				EF6E047872D691EFB27C9543 /* Pods_Weather.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A30CA4661E2B9BD4009F2C35 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				A30CA4671E2B9BFB009F2C35 /* EmptySegue.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		A30CA46F1E2BCF10009F2C35 /* Storyboard:xib */ = {
@@ -228,7 +218,6 @@
 				A344B6AE1E26ABD900EE4473 /* Extension */,
 				A344B69D1E26AA9C00EE4473 /* ModelUpdater */,
 				A344B6A41E26AB0600EE4473 /* Networking */,
-				A30CA4661E2B9BD4009F2C35 /* Helpers */,
 				A30CA46F1E2BCF10009F2C35 /* Storyboard:xib */,
 				A38965AD1E2553B400C594C6 /* Assets.xcassets */,
 				A38965B21E2553B400C594C6 /* Info.plist */,
@@ -301,7 +290,6 @@
 				TargetAttributes = {
 					A38965A21E2553B400C594C6 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = BRGM4DS25U;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -405,7 +393,6 @@
 				A3B9B86D1E27F6DC00FCC045 /* GraphViewControllerPresenter.swift in Sources */,
 				A3B9CD1D1E260AB60005959E /* Protocols.swift in Sources */,
 				A344B6A21E26AAC100EE4473 /* Spider.swift in Sources */,
-				A30CA4681E2B9BFB009F2C35 /* EmptySegue.swift in Sources */,
 				A344B6A11E26AAC100EE4473 /* SpiderProtocols.swift in Sources */,
 				A344B6BE1E26B41A00EE4473 /* GlobalConst.swift in Sources */,
 				A344B6B41E26AFE100EE4473 /* WeatherModel.xcdatamodeld in Sources */,
@@ -544,7 +531,7 @@
 			baseConfigurationReference = 07916059EE6B64C6A3CA4AF2 /* Pods-Weather.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = BRGM4DS25U;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Weather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.Weather;
@@ -558,7 +545,7 @@
 			baseConfigurationReference = B9FF3388ABA6E57B464E6018 /* Pods-Weather.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = BRGM4DS25U;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Weather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.Weather;
