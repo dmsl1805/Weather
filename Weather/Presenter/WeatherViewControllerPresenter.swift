@@ -42,7 +42,7 @@ class WeatherViewControllerPresenter: NSObject, ViewControllerPresenterProtocol,
     required init( viewController: UIViewController, model: ModelProtocol?) {
         self.model = model
         self.viewController = viewController
-
+        
         super.init()
         
         self.forecastUpdateHTTPRequest = ForecastUpdateHTTPRequest(model: self.cityModel!.first!)
@@ -66,7 +66,33 @@ class WeatherViewControllerPresenter: NSObject, ViewControllerPresenterProtocol,
         let selectItemPresenter = SelectItemViewControllerPresenter(viewController: weatherVC.selectCityVc!, model: cityModel)
         selectItemPresenter.selctedCityId = Int(allData.first?.city_id ?? -1024)
         var previousSelectedView: UIView?
+        
+        weatherVC.selectCityVc!.presenter = selectItemPresenter
+        
+        
+        let graphPresenter = GraphViewControllerPresenter(viewController: weatherVC.graphVc, model: allData)
+        weatherVC.graphVc.presenter = graphPresenter
+        
+        let loaderPresenter = LoaderViewControllerPresenter(viewController: weatherVC.loaderVc, model: "Select any city to begin")
+        loaderPresenter.loaderHidden = true
+        weatherVC.loaderVc.presenter = loaderPresenter
+        let forecastDetailPresenter = ForecastDetailViewControllerPresenter(viewController: weatherVC.forecastDetailVc!, model: allData.first)
+        weatherVC.forecastDetailVc.presenter = forecastDetailPresenter
+        
+        if allData.count == 0 {
+            loaderPresenter.loaderHidden = true
+            loaderPresenter.labelText = "Select any city to begin"
+            weatherVC.containerVc.show(weatherVC.loaderVc)
+        } else {
+            weatherVC.containerVc.show(weatherVC.graphVc)
+        }
+        
         selectItemPresenter.itemSelected = { [unowned self] (city: City?, sender: CityViewPresenter) -> Void in
+            if self.persistentStorageController.fetchAllForecast().count == 0 {
+                loaderPresenter.loaderHidden = false
+                loaderPresenter.labelText = "Updating"
+                self.weatherVC.containerVc.show(self.weatherVC.loaderVc)
+            }
             self.forecastUpdateHTTPRequest.city = city!
             self.spider?.sendRequest().deleteInfo().writeInfo().execute()
             if previousSelectedView != sender.cityView {
@@ -74,22 +100,23 @@ class WeatherViewControllerPresenter: NSObject, ViewControllerPresenterProtocol,
                 previousSelectedView = sender.cityView
             }
         }
-        
-        weatherVC.selectCityVc!.presenter = selectItemPresenter
-        
-        let graphPresenter = GraphViewControllerPresenter(viewController: weatherVC.forecastVc!, model: allData)
-        weatherVC.forecastVc?.presenter = graphPresenter
-        
-        let forecastDetailPresenter = ForecastDetailViewControllerPresenter(viewController: weatherVC.forecastDetailVc!, model: allData.first)
-        weatherVC.forecastDetailVc.presenter = forecastDetailPresenter
     }
     
     // MARK: SpiderDelegateProtocol
     
     func spider(_ spider: SpiderProtocol,
-                         didGet response: TempObjectStorageProtocol?,
-                         error: Error?) {
-        
+                didGet response: TempObjectStorageProtocol?,
+                error: Error?) {
+        if let err = error {
+            OperationQueue.main.addOperation {
+                [unowned self] in
+                self.weatherVC.containerVc.show(self.weatherVC.loaderVc)
+                let loaderPresenter = self.weatherVC.loaderVc.presenter as! LoaderViewControllerPresenter
+                loaderPresenter.loaderHidden = true
+                loaderPresenter.labelText = err.localizedDescription
+                
+            }
+        }
     }
     
     func spider(_ spider: SpiderProtocol, didFinishExecuting operation: SpiderOperationType) {
@@ -97,13 +124,15 @@ class WeatherViewControllerPresenter: NSObject, ViewControllerPresenterProtocol,
         case .writeInfo:
             OperationQueue.main.addOperation {
                 let allForecast = self.persistentStorageController.fetchAllForecast()
-                self.weatherVC.forecastVc?.presenter?.model = allForecast
+                self.weatherVC.graphVc.presenter?.model = allForecast
                 self.weatherVC.forecastDetailVc.presenter.model = allForecast.first
+                if allForecast.count != 0 {
+                    self.weatherVC.containerVc.show(self.weatherVC.graphVc)
+                    self.weatherVC.graphVc.presenter.model = allForecast
+                }
             }
         default:
             break
         }
     }
-    
-
 }

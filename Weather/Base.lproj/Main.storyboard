@@ -53,7 +53,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oWi-Dd-n3o">
                                 <rect key="frame" x="0.0" y="244" width="375" height="423"/>
                                 <connections>
-                                    <segue destination="oQJ-jk-6cU" kind="embed" id="ZDx-l5-8xs"/>
+                                    <segue destination="4zS-39-PeN" kind="embed" id="dFh-WT-HZF"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Odf-cG-jog">
@@ -303,111 +303,23 @@
             </objects>
             <point key="canvasLocation" x="916" y="-30"/>
         </scene>
-        <!--Graph View Controller-->
-        <scene sceneID="njt-ca-oUd">
+        <!--Container View Controller-->
+        <scene sceneID="GXW-dY-Qcs">
             <objects>
-                <viewController storyboardIdentifier="GraphViewController" id="oQJ-jk-6cU" customClass="GraphViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4zS-39-PeN" customClass="ContainerViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="d8T-F3-hY5"/>
-                        <viewControllerLayoutGuide type="bottom" id="5uW-Vi-3Rv"/>
+                        <viewControllerLayoutGuide type="top" id="WP2-pu-R2r"/>
+                        <viewControllerLayoutGuide type="bottom" id="9DP-kv-u9Y"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="mXP-8S-uQD">
+                    <view key="view" contentMode="scaleToFill" id="C8j-xf-MJg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="423"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1Y-jy-2zG" customClass="ScrollableGraphView" customModule="ScrollableGraphView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="423"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="240" id="Q83-Ph-ScK"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundFillColor">
-                                        <color key="value" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                        <color key="value" red="0.46666666670000001" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shouldFill" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
-                                        <color key="value" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="fillGradientStartColor">
-                                        <color key="value" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="fillGradientEndColor">
-                                        <color key="value" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="dataPointSpacing">
-                                        <real key="value" value="100"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="dataPointSize">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="lineStyle_">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shouldDrawBarLayer" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="fillType_">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="lineCurviness">
-                                        <real key="value" value="0.5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shouldDrawDataPoint" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="dataPointFillColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="referenceLineLabelColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="referenceLineColor">
-                                        <color key="value" red="1" green="1" blue="0.48738606770833331" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="numberOfIntermediateReferenceLines">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shouldAdaptRange" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="dataPointLabelColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shouldRangeAlwaysStartAtZero" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="direction_">
-                                        <integer key="value" value="0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shouldAutomaticallyDetectRange" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="topMargin">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="bottomMargin">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Q83-Ph-ScK"/>
-                                    </mask>
-                                </variation>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="e1Y-jy-2zG" firstAttribute="top" secondItem="mXP-8S-uQD" secondAttribute="top" id="8b1-DR-mne"/>
-                            <constraint firstAttribute="trailing" secondItem="e1Y-jy-2zG" secondAttribute="trailing" id="CxB-AT-XFH"/>
-                            <constraint firstItem="e1Y-jy-2zG" firstAttribute="leading" secondItem="mXP-8S-uQD" secondAttribute="leading" id="tDO-fw-6mS"/>
-                            <constraint firstItem="5uW-Vi-3Rv" firstAttribute="top" secondItem="e1Y-jy-2zG" secondAttribute="bottom" id="ubb-9O-YzP"/>
-                        </constraints>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <outlet property="graphView" destination="e1Y-jy-2zG" id="nu9-4p-3vX"/>
-                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ggs-6k-vkp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tPu-wi-3Oa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="916" y="384"/>
+            <point key="canvasLocation" x="916" y="386"/>
         </scene>
         <!--Forecast Detail View Controller-->
         <scene sceneID="csH-fJ-DRt">

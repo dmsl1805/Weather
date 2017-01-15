@@ -10,7 +10,9 @@ import ScrollableGraphView
 
 class GraphViewController: UIViewController, ViewControllerProtocol {
     
-    @IBOutlet var graphView: ScrollableGraphView!
+    var graphView: ScrollableGraphView! {
+        return view as! ScrollableGraphView
+    }
     
     var presenter: ViewControllerPresenterProtocol!
     

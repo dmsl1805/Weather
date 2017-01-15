@@ -13,9 +13,12 @@ class WeatherViewController: UIViewController, ViewControllerProtocol {
     @IBOutlet var weatherDetailVcTopConstraint: NSLayoutConstraint!
     
     var selectCityVc: SelectItemViewController!
-    var forecastVc: GraphViewController!
     var forecastDetailVc: ForecastDetailViewController!
+    var containerVc: ContainerViewController!
     var presenter: ViewControllerPresenterProtocol!
+    
+    let loaderVc = EmptyLoaderViewController()
+    let graphVc = GraphViewController()
     
     override func viewWillAppear(_ animated: Bool) {
         self.presenter.configure()
@@ -24,15 +27,12 @@ class WeatherViewController: UIViewController, ViewControllerProtocol {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let selectVC = segue.destination as? SelectItemViewController {
             selectCityVc = selectVC
-        } else if let forecast = segue.destination as? GraphViewController {
-            forecastVc = forecast
+        } else if let container = segue.destination as? ContainerViewController {
+            containerVc = container
+            container.currentViewController = loaderVc
         } else if let forecastDetail = segue.destination as? ForecastDetailViewController {
             forecastDetailVc = forecastDetail
         }
-    }
-
-    func showEntryView() {
-        //
     }
 }
 
