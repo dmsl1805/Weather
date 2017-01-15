@@ -39,6 +39,8 @@ class WeatherViewControllerPresenter: NSObject, ViewControllerPresenterProtocol,
         }
     }
     
+    private var shouldShowError = false
+    
     required init( viewController: UIViewController, model: ModelProtocol?) {
         self.model = model
         self.viewController = viewController
@@ -114,19 +116,20 @@ class WeatherViewControllerPresenter: NSObject, ViewControllerPresenterProtocol,
                 let loaderPresenter = self.weatherVC.loaderVc.presenter as! LoaderViewControllerPresenter
                 loaderPresenter.loaderHidden = true
                 loaderPresenter.labelText = err.localizedDescription
-                
             }
         }
+        
+        shouldShowError = error != nil
     }
     
     func spider(_ spider: SpiderProtocol, didFinishExecuting operation: SpiderOperationType) {
         switch operation {
         case .writeInfo:
-            OperationQueue.main.addOperation {
+            OperationQueue.main.addOperation { [unowned self] in
                 let allForecast = self.persistentStorageController.fetchAllForecast()
                 self.weatherVC.graphVc.presenter?.model = allForecast
                 self.weatherVC.forecastDetailVc.presenter.model = allForecast.first
-                if allForecast.count != 0 {
+                if allForecast.count != 0 && !self.shouldShowError {
                     self.weatherVC.containerVc.show(self.weatherVC.graphVc)
                     self.weatherVC.graphVc.presenter.model = allForecast
                 }
