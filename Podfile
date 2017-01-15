@@ -7,7 +7,7 @@ target 'Weather' do
 
   # Pods for Weather
 	pod 'ScrollableGraphView'
-	pod 'IGListKit'
+	
 end
 
 post_install do |installer|
